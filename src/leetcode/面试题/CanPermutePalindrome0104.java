@@ -4,6 +4,11 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * 2020/11/14
+ * 判断一个字符串是否一个回文字符的子字符
+ * 简单来说只需要判断字符能否重复出现两次即可
+ */
 public class CanPermutePalindrome0104 {
 
     public static boolean canPermeutePalind(String s){
