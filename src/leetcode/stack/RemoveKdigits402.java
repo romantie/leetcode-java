@@ -19,7 +19,6 @@ public class RemoveKdigits402 {
                 k--;
             }
             if (stack.isEmpty() && i=='0'){
-                k--;
                 continue;
             }
             stack.push(i);
@@ -43,8 +42,8 @@ public class RemoveKdigits402 {
 
 
     public static void main(String[] args) {
-        String str = "1432219";
-        String res = removeKDigits(str,2);
+        String str = "10200";
+        String res = removeKDigits(str,1);
         System.out.println(res);
     }
 }
