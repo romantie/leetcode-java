@@ -1,4 +1,4 @@
-package leetcode.树;
+package leetcode.listnode;
 
 /**
  * 2020/11/20每日日一题撒，又是指针，在leetcode147
