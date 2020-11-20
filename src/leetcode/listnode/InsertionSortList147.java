@@ -1,6 +1,6 @@
 package leetcode.listnode;
 
-public class InsertionSortList {
+public class InsertionSortList147 {
     class ListNode{
         int val ;
         ListNode next;

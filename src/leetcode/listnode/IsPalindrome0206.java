@@ -4,7 +4,12 @@ package leetcode.listnode;
  * 判断一个链表是否回文，中间往后反转链表
  */
 public class IsPalindrome0206 {
-
+    static class ListNode{
+        int val ;
+        ListNode next;
+        ListNode(){}
+        ListNode(int x){val = x;}
+    }
     public static boolean idpalindrome(ListNode head){
         ListNode dummy = new ListNode(0);
         dummy.next = head;
