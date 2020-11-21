@@ -36,6 +36,24 @@ public class mergeTwoLists21 {
             return l2;
         }
     }
+    //递归自己看得东
+    public ListNode mergeTwoLists3(ListNode l1,ListNode l2){
+        if (l1 == null){
+            return  l2;
+        }
+        if (l2 == null){
+            return l1;
+        }
+        ListNode res;
+        if (l1.val < l2.val){
+            res = l1;
+            res.next = mergeTwoList2(l1.next,l2);
+        }else{
+            res = l2;
+            res.next = mergeTwoList2(l1,l2.next);
+        }
+        return res;
+    }
 
     //迭代
     public ListNode mergeTwoList2(ListNode l1, ListNode l2){
