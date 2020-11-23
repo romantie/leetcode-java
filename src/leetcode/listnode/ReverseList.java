@@ -7,7 +7,12 @@ import java.util.Stack;
  */
 public class ReverseList {
 
-
+    class ListNode{
+        int val ;
+        ListNode next;
+        ListNode(){}
+        ListNode(int x){val = x;}
+    }
     /**
      * 使用栈解决，节点一个个入栈，出栈时将节点串成一个新的链表
      */
