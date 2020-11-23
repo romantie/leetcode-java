@@ -81,6 +81,7 @@ public class SearchMatrix74 {
         int[][] matrix = {{1,2,8,9},{2,4,9,12},{4,7,10,13},{6,8,11,15}};
         int r = matrix.length;
         int target = 7;
+        System.out.println(r);
         //boolean result = search(matrix,target);
         boolean res2 = Find(target,matrix);
         //System.out.println(result);
