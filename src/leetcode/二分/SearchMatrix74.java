@@ -50,12 +50,41 @@ public class SearchMatrix74 {
         return false;
     }
 
+    /**
+     * 这是另一种二维，行和列都是升序，与第一种不同之处是第一种的下面一行第一个大于上一行的最后一个数字
+     * 采用对角线的方法，从右上遍历至左下
+     * @param target
+     * @param array
+     * @return
+     */
+    public static boolean Find(int target, int[][] array) {
+        int rows = array.length;
+        if(rows==0) return false;
+        int cols = array[0].length;
+        if(cols==0) return false;
+        //从右上找
+        int row = 0;
+        int col = cols-1;
+        while(row<rows && col>=0){
+            if(array[row][col] <target){
+                row++;
+            }else if(array[row][col]>target){
+                col--;
+            }else{
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
-        int[][] matrix = {{1,3,5,7},{10,11,16,20},{23,30,34,50}};
+        int[][] matrix = {{1,2,8,9},{2,4,9,12},{4,7,10,13},{6,8,11,15}};
         int r = matrix.length;
-        int target = 3;
-        boolean result = search(matrix,target);
-        System.out.println(result);
+        int target = 7;
+        //boolean result = search(matrix,target);
+        boolean res2 = Find(target,matrix);
+        //System.out.println(result);
+       System.out.println(res2);
 
     }
 }
