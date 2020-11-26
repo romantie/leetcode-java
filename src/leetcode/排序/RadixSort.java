@@ -52,7 +52,7 @@ public class RadixSort {
     }
 
     public static void main(String[] args) {
-        int[] nums = {5,102,2,451,555,456,89,98};
+        int[] nums = {9999,1};
         radixSort(nums);
         for (int i = 0;i<nums.length;i++){
             System.out.printf("%d ",nums[i]);
