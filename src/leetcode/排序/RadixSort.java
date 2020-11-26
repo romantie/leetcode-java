@@ -39,14 +39,14 @@ public class RadixSort {
                 int val = (num / (int) Math.pow(10, i - 1)) % 10;
                 bucket.get(val).add(num);
             }
-            //没一趟排序后将元素放入元素组
+            //每一趟排序后将元素放入元素组
             int k=0;
             for (int j=0;j<10;j++){
-                for (Integer x:bucket.get(j)){
+                for (Integer x:bucket.get(j))
                     nums[k++]= x;
                     //一趟排序以后将桶清空
-                    bucket.get(j).clear();
-                }
+                bucket.get(j).clear();
+
             }
         }
     }
