@@ -10,6 +10,8 @@ import java.util.List;
 /**
  * 2020/11/26
  * 在学一遍排序，第一道桶排序
+ * 桶排序步骤
+ * 1.找出最大最小值，确定桶的个数 2.初始化桶 3.对通道内部排序4.进行输出
  */
 public class bucketSort {
     public static void sort_tong(int[] nums){
