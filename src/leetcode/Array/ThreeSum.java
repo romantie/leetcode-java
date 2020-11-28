@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * 2020/11/23
- *
+ *排序加双指针，先将数组进行排序然后使用双指针，一左一右，遍历相加，
  */
 public class ThreeSum {
     public static List<List<Integer>> threeSum(int[] nums){
@@ -15,7 +15,7 @@ public class ThreeSum {
         if (nums == null || len<3) return ans;
         Arrays.sort(nums);
         for (int i =0;i<len;i++){
-            //如果第一个数字大于0，那么三叔之和必定大于0
+            //如果第一个数字大于0，那么三数之和必定大于0
             if (nums[i] >0 ) break;
             //去重
             if (i>0 && nums[i]==nums[i-1]) continue;
@@ -26,7 +26,7 @@ public class ThreeSum {
                 int sum = nums[i] + nums[L] +nums[R];
                 if (sum == 0){
                     ans.add(Arrays.asList(nums[i],nums[L],nums[R]));
-                    while(L < R && nums[L] == nums[L+1]) L++;
+                    while (L < R && nums[L] == nums[L+1]) L++;
                     while (L < R && nums[R] == nums[R-1]) R--;
                     L++;
                     R--;
