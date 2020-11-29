@@ -1,5 +1,8 @@
 package leetcode.listnode;
 
+/**
+ * 对链表进行插入排序，使链表有序
+ */
 public class InsertionSortList147 {
     class ListNode{
         int val ;
