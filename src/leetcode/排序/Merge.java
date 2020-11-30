@@ -17,7 +17,7 @@ public class Merge {
         int hi = a.length - 1;
         sort(a,lo,hi);
     }
-
+    //分治中分的阶段，将数组分成不同的小组
     private static void sort(Comparable[] a,int lo ,int hi){
         if (hi <= lo) return;
         //对lo和hi中间的数据进行分组
@@ -28,7 +28,7 @@ public class Merge {
         //将两个组中的数据归并
         merge(a,lo,mid,hi);
     }
-
+    //归并阶段，将小小数组每个元素的大小进行比较，然后排序合并
     private static void merge(Comparable[] a,int lo,int mid,int hi){
         //定义三个指针，
         int i = lo;
