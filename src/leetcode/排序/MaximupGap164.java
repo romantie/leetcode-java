@@ -20,26 +20,27 @@ public class MaximupGap164 {
             if (max < num)
                 max = num;
         }
-        //确定最大值的位数，即确定桶的个数
+        //确定最大值的位数，即循环几轮
         int maxFigure=1;
         while (max/10 > 0){
             maxFigure++;
             max = max/10;
         }
-        //初始化桶
+        //初始化桶，基数排序痛的个数为10，0-9共10个桶
         ArrayList<LinkedList<Integer>> bucket = new ArrayList<>(maxFigure);
         for (int i =0;i<10;i++){
             bucket.add(new LinkedList<Integer>());
         }
 
-        //进行排序
+        //进行排序，由低到高
         for (int i = 1;i<=maxFigure;i++){
+            //将数字放入桶中
             for (int num : nums) {
                 int index = (num / (int) Math.pow(10, i - 1)) % 10;
                 bucket.get(index).add(num);
             }
 
-            //将桶中的原数据放入桶中
+            //将桶中的原数据取出，取完后将桶清空
             int k =0;
             for (int j=0;j<10;j++){
                 for (Integer x : bucket.get(j))
