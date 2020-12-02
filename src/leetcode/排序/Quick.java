@@ -42,6 +42,7 @@ public class Quick {
                 if (right==lo)
                     break;
             }
+
             while (less(a[++left],key)){
                 if (left==hi)
                     break;
