@@ -16,11 +16,12 @@ public class jiance_200901 {
         n = sc.nextInt();
         X = sc.nextInt();
         Y = sc.nextInt();
+        if (!(n>=3 && n<=200)) return;
+        if (Math.abs(X)>1000 && Math.abs(Y)>1000) return;
         for (int i=0;i<n;i++){
             location[i][0] = sc.nextInt();
             location[i][1] = sc.nextInt();
         }
-        sc.close();
         jiance(n,X,Y,location);
     }
     public static void jiance(int n, int X, int Y, int[][] location){
