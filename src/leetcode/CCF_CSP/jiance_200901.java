@@ -6,6 +6,7 @@ import java.util.Scanner;
 /**
  * 2020/12/2
  * csp认证第一题，检测站问题，求距离最近的三个点
+ *
  */
 public class jiance_200901 {
     public static void main(String[] args){
