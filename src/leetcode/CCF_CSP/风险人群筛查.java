@@ -10,15 +10,12 @@ public class 风险人群筛查 {
     public static void main(String[] args) {
         ArrayList<Integer> list = new ArrayList<>();
         //n表示人数，k连续的点，t个点，range范围，nums每个人的轨迹记录
-        int n=0;
-        int k = 0;
-        int t = 0;
         int[][] range = new int[2][2];
-        int[][] nums = new int[20][1000];
+        int[][] nums = new int[22][1000];
         Scanner sc = new Scanner(System.in);
-        n = sc.nextInt();
-        k = sc.nextInt();
-        t = sc.nextInt();
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+        int t = sc.nextInt();
         if (n<1 || n>20) return ;
         if (k<1 || k>1000) return;
         if (t<1 || t>1000) return;
@@ -29,7 +26,6 @@ public class 风险人群筛查 {
                 if (Math.abs(range[i][j])>1000000)
                     return ;
             }
-
         }
         //对行动轨迹赋值
         for (int i=0; i<n;i++){
@@ -52,7 +48,6 @@ public class 风险人群筛查 {
         int stay = 0;
         int s=0;
         int s2 = 0;
-
         for (int i=0 ; i<n ; i++){
             int j=0;
             while(j<t){
