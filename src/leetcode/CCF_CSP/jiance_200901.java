@@ -11,7 +11,7 @@ public class jiance_200901 {
     public static void main(String[] args){
         int X,Y;
         int n;
-        int [][] location = new int[20][2];
+        int [][] location = new int[205][2];
         Scanner sc = new Scanner(System.in);
         n = sc.nextInt();
         X = sc.nextInt();
@@ -21,6 +21,10 @@ public class jiance_200901 {
         for (int i=0;i<n;i++){
             location[i][0] = sc.nextInt();
             location[i][1] = sc.nextInt();
+
+            if(Math.abs(location[i][0])>1000 || Math.abs(location[i][1])>1000){
+                return ;
+            }
         }
         jiance(n,X,Y,location);
     }
