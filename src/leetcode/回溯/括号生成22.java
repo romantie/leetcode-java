@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 2020/12/10括号的生成，给点一个数字n，代表括号的数量
+ * 2020/12/10括号的生成，给点一个数字n，代表括号的数量,生成所有非合法括号
  * 使用回溯的方法，并且将结果保存数组
  */
 public class 括号生成22 {
