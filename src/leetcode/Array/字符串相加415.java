@@ -11,13 +11,13 @@ public class 字符串相加415 {
         int add = 0;
         StringBuffer ans = new StringBuffer();
         while(i >= 0 || j >= 0 || add != 0){
+            //不够位数在前面补零
             int x = i >= 0 ? num1.charAt(i) - '0': 0;
             int y = j >= 0 ? num2.charAt(j) - '0': 0;
             int result = x + y + add;
             ans.append(result % 10);
             add = result / 10;
             i--;
-
             j--;
         }
 
