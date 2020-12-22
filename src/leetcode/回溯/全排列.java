@@ -5,16 +5,16 @@ import java.util.List;
 
 public class 全排列 {
     //保存结果
-    List<List<Integer>> res = new LinkedList<>();
+    static List<List<Integer>> res = new LinkedList<>();
 
-    List<List<Integer>> permute(int[] nums){
+    public static List<List<Integer>> permute(int[] nums){
         LinkedList<Integer> track = new LinkedList<>();
         backtrack(nums,track);
         return res;
 
     }
 
-    void backtrack(int[] nums,LinkedList<Integer> track){
+    public static void backtrack(int[] nums,LinkedList<Integer> track){
         //触发结束条件
         if (track.size() == nums.length){
             res.add(new LinkedList<>(track));
@@ -31,5 +31,11 @@ public class 全排列 {
             //取消选择
             track.remove();
         }
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1,2,3};
+        List<List<Integer>> permute = permute(nums);
+        System.out.println(permute);
     }
 }
