@@ -9,7 +9,7 @@ import java.util.List;
  * 2020/11/16
  * 二叉树的中序遍历，自己写一下看能不能写出来吧
  */
-public class InorderTraversal {
+class InorderTraversal {
 
     //先使用递归的方法中序遍历
     private List<Integer> res;
@@ -45,6 +45,8 @@ public class InorderTraversal {
         }
         return res;
     }
+
+    //
 
 }
 
