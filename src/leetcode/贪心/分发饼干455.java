@@ -1,6 +1,7 @@
 package leetcode.贪心;
 
 import java.util.Arrays;
+import java.util.HashSet;
 
 /**
  * 2020/12/25，今天圣诞节，一个人度过，hhh
@@ -9,8 +10,6 @@ import java.util.Arrays;
  */
 public class 分发饼干455 {
     public static int findContentChildern(int[] g,int[] s){
-        Arrays.sort(s);
-        Arrays.sort(g);
 
         Arrays.sort(g);
         Arrays.sort(s);
