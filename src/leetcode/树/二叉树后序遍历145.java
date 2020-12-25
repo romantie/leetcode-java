@@ -1,6 +1,8 @@
 package leetcode.树;
 
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 public class 二叉树后序遍历145 {
@@ -32,6 +34,33 @@ public class 二叉树后序遍历145 {
             dfs(root.left);
             dfs(root.right);
             res.add(root.val);
+        }
+
+        //迭代实现二叉树的后序遍历
+        public List<Integer> postorderTraversal2(TreeNode root){
+            List<Integer> res = new ArrayList<Integer>();
+            if (root == null){
+                return res;
+            }
+
+            Deque<TreeNode> stack = new LinkedList<TreeNode>();
+            TreeNode prev = null;
+            while (root != null || !stack.isEmpty()){
+                while (root != null){
+                    stack.push(root);
+                    root = root.left;
+                }
+                root = stack.pop();
+                if (root.right == null || root.right==prev){
+                    res.add(root.val);
+                    prev = root;
+                    root = null;
+                } else{
+                    stack.push(root);
+                    root = root.right;
+                }
+            }
+            return res;
         }
     }
 }
