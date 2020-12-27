@@ -6,8 +6,9 @@ import java.util.List;
 
 /**
  * 2020/12/25
+ * 本质上还是二叉树的层序遍历，但是使用链表保存每一层的数据
  */
-public class 二叉树链表保存35 {
+public class 特定深度节点链表0403 {
     class TreeNode{
         int val;
         TreeNode left;
