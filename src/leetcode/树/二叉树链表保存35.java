@@ -26,6 +26,7 @@ public class 二叉树链表保存35 {
         //将当前的节点加入队列
         queue.offer(tree);
 
+        //构造一个数组保存链表的头节点
         List<ListNode> res = new ArrayList<>();
         ListNode dummy = new ListNode(0);
 
@@ -35,6 +36,7 @@ public class 二叉树链表保存35 {
             ListNode cur = dummy;
 
             for (int i = 0;i < size; i++){
+                //弹出最前面的节点，并将其放入同一层的链表节点后
                 TreeNode node = queue.poll();
                 cur.next = new ListNode(node.val);
                 if (node.left != null){
@@ -46,6 +48,7 @@ public class 二叉树链表保存35 {
                 //指针后移一位
                 cur = cur.next;
             }
+            //将头节点放入数组中，同时将链表的头节点置空
             res.add(dummy.next);
             dummy.next = null;
         }
