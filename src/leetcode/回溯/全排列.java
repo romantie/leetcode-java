@@ -3,6 +3,17 @@ package leetcode.回溯;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * result = []
+ * def backtrack(路径, 选择列表):
+ *     if 满足结束条件:
+ *         result.add(路径)
+ *         return
+ *     for 选择 in 选择列表:
+ *         做选择
+ *         backtrack(路径, 选择列表)
+ *         撤销选择
+ */
 public class 全排列 {
     //保存结果
     static List<List<Integer>> res = new LinkedList<>();
@@ -14,6 +25,11 @@ public class 全排列 {
 
     }
 
+    /**
+     *
+     * @param nums 选择列表
+     * @param track 路径
+     */
     public static void backtrack(int[] nums,LinkedList<Integer> track){
         //触发结束条件
         if (track.size() == nums.length){
