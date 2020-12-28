@@ -13,6 +13,13 @@ public class 对称二叉树101 {
             this.right = right;
         }
     }
+
+    /**
+     * 递归解法，使用两个指针分别指向树，然后一个在左边遍历，一个在右边遍历，
+     * 判断节点是否相同，相同返回true
+     * @param root
+     * @return
+     */
     public boolean isSymmetric(TreeNode root){
         return check(root,root);
     }
