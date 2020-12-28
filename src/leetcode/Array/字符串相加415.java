@@ -9,7 +9,7 @@ public class 字符串相加415 {
         int i = num1.length() - 1;
         int j = num2.length() - 1;
         int add = 0;
-        StringBuffer ans = new StringBuffer();
+        StringBuilder ans = new StringBuilder();
         while(i >= 0 || j >= 0 || add != 0){
             //不够位数在前面补零
             int x = i >= 0 ? num1.charAt(i) - '0': 0;
