@@ -8,6 +8,7 @@ public class 字符串相加415 {
     public static String addString(String num1,String num2){
         int i = num1.length() - 1;
         int j = num2.length() - 1;
+        //add存储进位
         int add = 0;
         StringBuilder ans = new StringBuilder();
         while(i >= 0 || j >= 0 || add != 0){
