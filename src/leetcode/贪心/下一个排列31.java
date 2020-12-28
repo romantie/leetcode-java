@@ -5,7 +5,7 @@ package leetcode.贪心;
  *两遍扫描，从后面往前面扫描，先找出一个比升序时减小的数字，之后在从后面扫描，
  * 找出一个比自己小的最大数，然后将其交换，最后将此数字后面的呃数字交换
  */
-public class 下一个排列 {
+public class 下一个排列31 {
     public void nextPermutation(int[] nums){
         int i = nums.length - 2;
         //第一遍扫描找出一个升序时下降的数字，
