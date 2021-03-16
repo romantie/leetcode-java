@@ -38,5 +38,6 @@ public class 上升下降字符串1370 {
         String s = "aaabbbcccddd";
         String s1 = sortString(s);
         System.out.println(s1);
+        System.out.println(('0'-'0'));
     }
 }
