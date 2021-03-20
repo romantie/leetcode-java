@@ -11,6 +11,14 @@ public class ReverseString344 {
         }
 
     }
+    public static void re(char[] s){
+        int n = s.length;
+        for (int left = 0,right = n-1; left < right ; ++left,--right){
+            char tem = s[left];
+            s[left] = s[right];
+            s[right] = tem;
+        }
+    }
     public static void main(String[] args) {
         char[] s= {'s','f','w','r'};
         ReverseString(s);

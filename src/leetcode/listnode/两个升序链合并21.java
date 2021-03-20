@@ -13,7 +13,7 @@ import java.util.List;
 
 
 
-public class mergeTwoLists21 {
+public class 两个升序链合并21 {
 
     class ListNode {
         int val;
