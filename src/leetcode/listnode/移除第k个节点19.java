@@ -4,7 +4,7 @@ package leetcode.listnode;
  * 2020/11/29
  * 移除链表的第N个节点
  */
-public class RemoveNthFromEnd19 {
+public class 移除第k个节点19 {
     private class ListNode{
         int val;
         ListNode next;

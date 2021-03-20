@@ -31,7 +31,7 @@ public class Search704 {
                 intHashMap.put(nums[i],i);
             }
         }
-        if (intHashMap.containsValue(target)){
+        if (intHashMap.containsKey(target)){
             return intHashMap.get(target);
         }else{
             return -1;
@@ -40,8 +40,10 @@ public class Search704 {
 
     public static void main(String[] args) {
         int[] nums ={1,3,5,6};
-        int target = 2;
+        int target = 3;
         int search = search(nums, target);
         System.out.println(search);
+        int search2 = search2(nums,target);
+        System.out.println(search2);
     }
 }

@@ -5,7 +5,7 @@ import java.util.Stack;
 /**
  * 2020/11/13 lmk 反转链表练习，
  */
-public class ReverseList {
+public class 反转链表练习 {
 
     class ListNode{
         int val ;

@@ -3,7 +3,7 @@ package leetcode.listnode;
 /**
  * 对链表进行插入排序，使链表有序
  */
-public class InsertionSortList147 {
+public class 链表插入排序147 {
     class ListNode{
         int val ;
         ListNode next;
@@ -21,6 +21,7 @@ public class InsertionSortList147 {
             if (lastSorted.val <= curr.val) {
                 lastSorted = lastSorted.next;
             } else {
+
                 ListNode pre = dummyHead;
                 while (pre.next.val <= curr.val) {
                     pre = pre.next;

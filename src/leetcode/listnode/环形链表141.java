@@ -29,4 +29,19 @@ public class 环形链表141 {
         }
         return true;
     }
+    public boolean haCy(ListNode head){
+        if (head == null || head.next == null){
+            return false;
+        }
+        ListNode slow = head;
+        ListNode fast = head.next;
+        while(slow != fast){
+            if (fast.next == null || fast == null ){
+                return false;
+            }
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return true;
+    }
 }

@@ -4,7 +4,7 @@ package leetcode.listnode;
  * 找出链表中的第k个节点
  * 用双指针，
  */
-public class KthToLast0202 {
+public class 找出链表第k个节点0202 {
     public static class ListNode {
         int val;
         ListNode next;
@@ -23,7 +23,18 @@ public class KthToLast0202 {
         }
         return i.val;
     }
-
+    public static int k(ListNode head ,int k){
+        ListNode frist = head;
+        ListNode  sec= head;
+        while(k-- > 0){
+            frist = frist.next;
+        }
+        while (frist != null){
+            frist = frist.next;
+            sec = sec.next;
+        }
+        return sec.val;
+    }
     public static void main(String[] args) {
 
     }
