@@ -18,3 +18,11 @@ from (
      ) as a
          join Department as b on b.Id = a.DepartmentId
 where a.ranking <= 3;
+
+
+#温度上升
+select Weather.id as Id
+from Weather
+         join
+     Weather b ON datediff(Weather.recordDate,b.recordDate) = 1
+         AND Weather.Temperature > b.Temperature
