@@ -7,7 +7,8 @@ import java.util.Arrays;
  * 2020/11/27
  * 选择排序
  */
-public class Selection {
+public class
+Selection {
     //排序
     public static void sort(Comparable[] a){
         for (int i=0;i<a.length-2;i++){

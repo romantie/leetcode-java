@@ -1,5 +1,7 @@
 package leetcode.树;
 
+import com.sun.source.tree.Tree;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -52,5 +54,36 @@ public class 二叉树锯齿形层序遍历103 {
         }
         return res;
 
+    }
+
+    public List<List<Integer>> cengxu(TreeNode root){
+        //构造一个返回集合
+        ArrayList<List<Integer>> res = new ArrayList<>();
+        if (root == null) return res;
+
+        //构造一个队列存放节点
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+
+        Boolean isLeft = true;
+        while (!queue.isEmpty()){
+            //构造一个双端队列存放每层的值
+            LinkedList<Integer> level = new LinkedList<>();
+            int queueSize = queue.size();
+            for (int i = 1; i<queueSize;i++){
+                TreeNode node = queue.poll();
+                if (isLeft){
+                    level.addLast(node.val);
+                }else{
+                    level.addFirst(node.val);
+                }
+
+                if (node.left!=null) queue.offer(node.left);
+                if (node.right!=null) queue.offer(node.right);
+            }
+            res.add(level);
+            isLeft = !isLeft;
+        }
+        return res;
     }
 }

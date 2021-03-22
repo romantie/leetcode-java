@@ -17,12 +17,15 @@ public class FourSum {
         if (nums == null || nums.length<4) return lists;
         //对数组进行排序
         Arrays.sort(nums);
+
         int length = nums.length;
+
         for (int i =0;i<length-3;i++){
             //进行剪枝，重复则跳过本次循环，如果前四个数大于目标值不可能等于目标值，后三个和第一个值小于目标值，也不会有值符合
             if (i>0 && nums[i] == nums[i-1]) continue;
             if (nums[i] + nums[i+1] +nums[i+2] + nums[i+3] >target) break;
             if (nums[i] + nums[length-3] + nums[length-2] + nums[length-1]<target) continue;
+
             for (int j =i+1 ;j<length-2;j++){
                 if (j>i+1 && nums[j] == nums[j-1]) continue;
                 if (nums[i] + nums[j] +nums[j+1] + nums[j+2] > target) break;

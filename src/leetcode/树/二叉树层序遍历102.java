@@ -55,4 +55,30 @@ public class 二叉树层序遍历102 {
         }
         return res;
     }
+
+
+    public List<List<Integer>> level(TreeNode root){
+        //构造集合存放每层的值
+        ArrayList<List<Integer>> res = new ArrayList<>();
+        if (root == null) return res;
+
+        //构造一个队列存放节点
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while(!queue.isEmpty()){
+            //level存放每层的值
+            ArrayList<Integer> level = new ArrayList<>();
+            int currQueueSize = queue.size();
+            for (int i =1; i<currQueueSize; i++){
+                TreeNode node = queue.poll();
+                level.add(node.val);
+                if (node.left!=null) queue.offer(node.left);
+                if (node.right!=null) queue.offer(node.right);
+            }
+            res.add(level);
+
+        }
+        return res;
+    }
 }

@@ -16,7 +16,7 @@ public class ThreeSum {
         Arrays.sort(nums);
         for (int i =0;i<len;i++){
             //如果第一个数字大于0，那么三数之和必定大于0
-            if (nums[i] >0 ) break;
+            if (nums[i] > 0 ) break;
             //去重
             if (i>0 && nums[i]==nums[i-1]) continue;
             //定义两个指针

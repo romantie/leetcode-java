@@ -31,12 +31,16 @@ public class bucketSort {
             bucket.add(new LinkedList<Integer>());
         }
 
+
         //将元素放入对应的桶中
         for (int i =0;i<nums.length;i++){
             int index = (nums[i]-min)/nums.length;
             bucket.get(index).add(nums[i]);
         }
-
+        for (int i = 0; i < nums.length; i++){
+            int index = (nums[i] - min) / nums.length;
+            bucket.get(index).add(nums[i]);
+        }
         //对每个桶内部的元素排序
         for (int i =0 ;i<bucket.size();i++){
             Collections.sort(bucket.get(i));
