@@ -1,0 +1,161 @@
+show tables;
+create table if not exists score(
+    username varchar(10) not null,
+    class int not null,
+    performance int not null
+);
+
+insert into score(username, class, performance) values
+    ('甲',1,98),
+    ('乙',1,95),
+    ('丙',1,84),
+    ('丁',1,56),
+    ('戊',1,40),
+    ('己',2,64),
+    ('庚',2,73),
+    ('辛',2,85),
+    ('壬',2,72),
+    ('癸',3,92),
+    ('子',3,64),
+    ('丑',3,95),
+    ('寅',3,81),
+    ('卯',4,76),
+    ('辰',4,86),
+    ('巳',4,55),
+    ('午',4,99),
+    ('未',4,39),
+    ('申',4,10),
+    ('酉',5,16),
+    ('戌',5,78),
+    ('亥',5,60);
+update score set performance=100 where class = 4 and username = '申';
+#A
+select count(username),avg(performance)
+from score;
+#B
+select class,count(username),avg(performance)
+from score
+group by class;
+#C
+select s.class,sum(s.performance > k.avg)
+       from score as s join
+(select class,avg(performance) as avg
+from score
+group by class) as k
+on s.class = k.class
+group by class;
+#D
+select  class,
+        sum(case when performance>90 then 1 else 0 end) as '>90',
+        sum(case when performance<60 then 1 else 0 end) as '<60'
+from score
+group by class;
+#E
+select username,performance
+from score
+order by performance desc
+limit 3;
+
+#F
+select class,
+       dense_rank() over (partition by class order by performance desc) as ranking
+from score
+where ranking <= 3;
+
+select
+    *
+from score s
+where
+        (select count(1)+1 from score where class=s.class and performance>s.performance)
+        <= 3;
+#G
+select  class,avg(performance) as ag,sum(performance>80) as sm
+from score
+group by class
+having ag > 60 and sm > 2;
+
+#H
+(select class,count(username) cc,avg(performance) dd
+from score)
+union
+(select class ee,count(username) ff,avg(performance) gg
+from score
+group by class);
+
+#I
+
+#J
+#用到的关键字执行顺序为 from,join,on,where,group,（avg,sum）,having,select,order by
+
+#K
+#我认为他们只是效率有差别，如果按照效率排序的话，count(字段) < count(主键id) < count(1) ≈ count(*)。所以建议尽量使用count(*)。
+
+#H
+#从统计数据来看，一班的人数为5，四班的人数为6，四班的人数比一班的人数多，但是均分高于一班，而且，四班的分数分布不均匀，
+
+create table if not exists subject(
+    username varchar(10) not null,
+    subject varchar(20) not null,
+    performance int not null
+);
+insert into subjects(username,subject,performance) values
+('甲','英语',98),
+('乙','英语',95),
+('丙','英语',84),
+('丁','英语',56),
+('甲','数学',40),
+('乙','数学',64),
+('丙','数学',73),
+('丁','数学',85),
+('乙','语文',72),
+('丙','语文',92),
+('丁','语文',64),
+('甲','历史',95),
+('乙','历史',81),
+('丁','历史',76),
+('甲','化学',86),
+('乙','化学',81);
+
+select distinct(username) from subjects a where a.username not in
+(select distinct (username) from subjects b
+where (b.subject = '英语' or b.subject = '数学' and b.performance <= 60) or (
+    b.subject = '化学' or b.subject = '历史' and b.performance <= 80));
+
+select distinct (username) from subjects where username not in (
+select distinct (username) from subjects
+where (subject = '英语' and performance <= 60) or (subject = '数学' and performance <= 60) or (subject = '化学' and performance <= 80) or (subject = '历史' and performance <= 80)
+group by username);
+
+
+#场景应用,表的名字为login
+select l4.userid,l4.date
+       from (
+           select *,datediff(l3.date - rn) as date_diff
+           from (
+                    select userid,
+                           date,
+                           row_number() over (partition by userid order by date asc) as rn
+                    from login
+                ) l3
+       )l4
+where  l4.date_diff =
+(
+         select l2.date_diff
+         from (
+                  select l1.userid, l1.date, datediff(l1.date - rn) as date_diff
+                  from (
+                           select userid,
+                                  date,
+                                  row_number() over (partition by userid order by date asc) as rn
+                           from login
+                       ) l1
+              ) l2
+         group by date_diff
+         having count(1) > 3
+     )
+
+
+#题4，udf
+    #UDF —— 一进多出，输入一行数据输出一行数据。
+    #UDAF —— 多进一出，输入多行数据输出一行数据，一般在group by中使用
+    #UDTF —— 一进多出用来实现一行输入多行输出

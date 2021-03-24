@@ -124,3 +124,104 @@ FROM
         FROM Employee
     )
 WHERE row_num IN (FLOOR((count_id + 1)/2), FLOOR((count_id + 2)/2))
+
+
+create table Activity
+(
+    play_id int not null,
+    device_id int not null,
+    event_date date not null,
+    games_played int not null
+);
+
+insert into activity values(1,2,'2016-05-01',5);
+insert into activity values(1,2,'2016-03-02',6);
+insert into activity values(2,3,'017-06-25',1);
+insert into activity values(3,1,'2016-03-02',2);
+insert into activity values(3,4,'2018-07-03',7);
+insert into activity values(4,4,'2018-07-03',3);
+insert into activity values(4,4,'2018-05-03',4);
+
+
+select a.play_id,a.device_id
+from (
+         select play_id,min(event_date) as frist_login,device_id
+         from activity
+         group by play_id
+     ) as a;
+
+select play_id,device_id
+from activity
+where (play_id,event_date) in (
+    select play_id,min(event_date) as frist_login
+    from activity
+    group by play_id
+);
+
+select play_id,device_id
+from(
+        select play_id,device_id,rank() over (partition by play_id order by event_date) as 'rank'
+        from activity
+    ) as a
+where 'rank' = 1;
+
+select *
+from activity;
+
+select *,sum(games_played)
+from activity a ,activity b
+where a.play_id=b.play_id and a.event_date > b.event_date
+
+select a.play_id,a.event_date,sum(b.games_played) as k
+from activity a,activity b
+where a.play_id = b.play_id and a.event_date >= b.event_date
+group by a.play_id, a.event_date;
+
+select *
+from activity a,activity b
+where a.play_id = b.play_id and a.event_date >= b.event_date
+group by a.play_id, a.event_date;
+
+SELECT NOW();
+SELECT year(DATE_FORMAT(NOW(),'%Y-%m-%d')) year
+
+select *
+from cinema a join cinema b
+                   on abs(a.seat_id - b.seat_id) = 1
+                       and a.free = true and b.free = true;
+
+
+select seat_id
+from cinema a join cinema b
+                   on abs(a.seat_id - b.seat_id) = 1
+                       and a.free = true and b.free = true
+group by a.seat_id;
+
+Create table If Not Exists Books (book_id int, name varchar(50), available_from date);
+Create table If Not Exists Orders (order_id int, book_id int, quantity int, dispatch_date date);
+Truncate table Books;
+insert into Books (book_id, name, available_from) values ('1', 'Kalila And Demna', '2010-01-01');
+insert into Books (book_id, name, available_from) values ('2', '28 Letters', '2012-05-12');
+insert into Books (book_id, name, available_from) values ('3', 'The Hobbit', '2019-06-10');
+insert into Books (book_id, name, available_from) values ('4', '13 Reasons Why', '2019-06-01');
+insert into Books (book_id, name, available_from) values ('5', 'The Hunger Games', '2008-09-21');
+Truncate table Orders;
+insert into Orders values ('1', '1', '2', '2018-07-26');
+insert into Orders values ('2', '1', '1', '2018-11-05');
+insert into Orders values ('3', '3', '8', '2019-06-11');
+insert into Orders values ('4', '4', '6', '2019-06-05');
+insert into Orders values ('5', '4', '5', '2019-06-20');
+insert into Orders values ('6', '5', '9', '2009-02-02');
+insert into Orders values ('7', '5', '8', '2010-04-13');
+
+select b.book_id,b.name
+from Orders o join Books b
+                   on o.book_id = b.book_id
+where o.quantity < 10 and datediff('2019-06-23',b.available_from);
+
+select b.book_id, name
+from books b left join orders o
+                       on b.book_id = o.book_id and dispatch_date >= '2018-06-23'
+where available_from < '2019-05-23'
+group by b.book_id
+having ifnull(sum(quantity), 0) < 10

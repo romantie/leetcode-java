@@ -16,9 +16,10 @@ from Activity
 where datediff('2019-07-27',activity_date) < 30
 group by activity_data;
 
+##查询过去30天的的登陆数平均
 select ifnull(round(count(distinct session_id) / count(distinct user_id),2),0) as k
 from activity
-where datediff('2019-07-27',activity_date) < 30
+where datediff('2019-07-27',activity_date) < 30;
 
 select ifnull(
     round(count(distinct session_id) / count(distinct user_id),2),
@@ -27,3 +28,29 @@ select ifnull(
 from
     activity
 where datediff('2017-07-27',activity) < 30;
+
+##580统计各专业学生人数，先将两表进行连接，使用count(Student_id)来计算数目
+SELECT
+    dept_name, COUNT(student_id) AS student_number
+FROM
+    department
+        LEFT OUTER JOIN
+    student ON department.dept_id = student.dept_id
+GROUP BY department.dept_name
+ORDER BY student_number DESC , department.dept_name
+;
+
+## 变更性别,要想动态地将值设置成列，我们可以在使用 CASE...WHEN... 流程控制语句的同时使用 UPDATE 语句。
+
+update salary
+set
+    sex =
+        case sex
+            when "m" then 'f'
+            else 'm'
+        end ;
+##596超过5名学生的课，使用group by将课程分组，结合having查出超过5名学生的课
+select class
+from courses
+group by class
+having count(distinct student) >= 5
