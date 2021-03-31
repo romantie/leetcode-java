@@ -1,6 +1,6 @@
 package 剑指offer;
 
-public class 旋转数组的最小数字 {
+public class 旋转数组的最小数字6 {
     public int minNum(int [] array){
         int low = 0,high = array.length - 1;
         while(low < high){
