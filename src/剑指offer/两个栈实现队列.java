@@ -12,13 +12,7 @@ public class 两个栈实现队列 {
         stack1.push(value);
     }
 
-    public int dateleHead{
-        if (stack2.isEmpty()){
-            while(!stack1.isEmpty()){
-                stack2.push(stack1.pop());
-            }
-        }
-        return stack2.pop();
+
+
 
     }
-}
